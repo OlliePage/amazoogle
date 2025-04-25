@@ -1,0 +1,38 @@
+{
+  "manifest_version": 3,
+  "name": "Amazon Minimalist",
+  "version": "1.0",
+  "description": "Transform Amazon UK into a clean, Google-like search interface with quick access tiles",
+  "permissions": ["webNavigation", "tabs", "storage"],
+  "host_permissions": ["*://*.amazon.co.uk/*"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*.amazon.co.uk/*"],
+      "js": ["content.js"],
+      "css": ["styles.css"],
+      "run_at": "document_start"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["amazon.svg", "amazon_homepage.png"],
+      "matches": ["*://*.amazon.co.uk/*"]
+    }
+  ],
+  "icons": {
+    "24": "icon24.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  },
+  "action": {
+    "default_icon": {
+      "16": "icon24.png",
+      "24": "icon24.png",
+      "32": "icon48.png"
+    },
+    "default_title": "Toggle Amazon Minimalist Mode"
+  }
+}
